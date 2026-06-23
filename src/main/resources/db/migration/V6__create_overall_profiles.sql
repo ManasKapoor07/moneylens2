@@ -60,4 +60,5 @@ CREATE TABLE IF NOT EXISTS overall_profiles (
                                   created_at                  TIMESTAMP      NOT NULL DEFAULT NOW()
 );
 
-CREATE UNIQUE INDEX idx_overall_profile_user ON overall_profiles (user_id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_overall_profile_user
+    ON overall_profiles (user_id);
