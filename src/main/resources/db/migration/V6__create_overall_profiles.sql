@@ -1,6 +1,6 @@
 -- V6__create_overall_profiles.sql
 
-CREATE TABLE overall_profiles (
+CREATE TABLE IF NOT EXISTS overall_profiles (
                                   id                          BIGSERIAL PRIMARY KEY,
 
     -- One profile per user
