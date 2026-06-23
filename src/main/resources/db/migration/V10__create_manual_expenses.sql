@@ -1,12 +1,12 @@
-CREATE TABLE manual_expenses (
-                                 id BIGSERIAL PRIMARY KEY,
-                                 user_id BIGINT NOT NULL REFERENCES users(id),
-                                 amount NUMERIC(12,2) NOT NULL,
-                                 category VARCHAR(64) NOT NULL,
-                                 note VARCHAR(255),
-                                 spent_at TIMESTAMP NOT NULL,
-                                 created_at TIMESTAMP NOT NULL DEFAULT now()
-);
+CREATE TABLE IF NOT EXISTS manual_expenses (
+                                               id BIGSERIAL PRIMARY KEY,
+                                               user_id BIGINT NOT NULL REFERENCES users(id),
+    amount NUMERIC(12,2) NOT NULL,
+    category VARCHAR(64) NOT NULL,
+    note VARCHAR(255),
+    spent_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT now()
+    );
 
-CREATE INDEX idx_manual_expenses_user_month
+CREATE INDEX IF NOT EXISTS idx_manual_expenses_user_month
     ON manual_expenses (user_id, spent_at);
